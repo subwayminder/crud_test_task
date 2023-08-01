@@ -1,0 +1,57 @@
+version: "3.9"
+
+services:
+    nginx:
+        container_name: crud_nginx
+        image: nginx:1.22-alpine
+        environment:
+            APP_HOST: localhost
+        volumes:
+            - ./docker/nginx/server.nginx.conf:/etc/nginx/conf.d/default.conf:ro
+        ports:
+            -   "8000:80"
+        networks:
+            - crud
+        depends_on:
+            - app
+
+    app:
+        container_name: crud_app
+        build:
+            dockerfile: docker/php/Dockerfile
+            context: ./
+        environment:
+            COMPOSER_INSTALL: false
+            SCHEDULE_RUN: false
+        volumes:
+            - ./:/var/www/html/
+        networks:
+            - crud
+        depends_on:
+            - db
+
+    db:
+        container_name: crud_db
+        image: mysql:8.0
+        restart: always
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: HgLmTuZ5PVJQQfrsjQBN
+            MYSQL_USER: crud
+            MYSQL_PASSWORD: fK68Ds2VzMzZf0zsTPZT
+            MYSQL_DATABASE: crud_db
+        volumes:
+            - db_data:/var/lib/mysql
+        networks:
+            - crud
+
+volumes:
+    db_data:
+        name: crud_db_data
+        external: false
+
+networks:
+    crud:
+        name: crud
+        driver: bridge
