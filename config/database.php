@@ -1,8 +1,8 @@
 <?php
 return [
-    'dbname' => 'crud_db',
-    'user' => 'crud',
-    'password' => 'fK68Ds2VzMzZf0zsTPZT',
-    'host' => 'db',
-    'driver' => 'pdo_mysql',
+    'dbname' => $_ENV['DB_DATABASE'],
+    'user' => $_ENV['DB_USER'],
+    'password' => $_ENV['DB_PASSWORD'],
+    'host' => $_ENV['DB_HOST'],
+    'driver' => $_ENV['DB_CONNECTION'],
 ];

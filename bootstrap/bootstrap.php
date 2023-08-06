@@ -9,7 +9,9 @@ use Doctrine\ORM\ORMSetup;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Subwayminder\CrudTestTask\Entity\User;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -29,14 +31,21 @@ $entityManager = new EntityManager($connection, $config);
 
 $request = Request::createFromGlobals();
 $jwt = $request->headers->get('Authorization');
-$decoded = $jwt !== null
-     ? JWT::decode($jwt,
-        new Key(
-        'DfzCzKBflsthbax1TKUawbhOd6NR207bgtr9DesRw5A0W7WznHNJShGwPCKuoKYV',
-        'HS256'
+try {
+    $decoded = $jwt !== null
+        ? JWT::decode($jwt,
+            new Key(
+                $_ENV['JWT_SECRET'],
+                'HS256'
+            )
         )
-    )
-    : null;
+        : null;
+}
+catch (Exception) {
+    (new JsonResponse([
+        'message' => 'Token is not valid'
+    ], Response::HTTP_BAD_REQUEST))->send();
+}
 $user = $decoded
     ? $entityManager
     ->getRepository(User::class)
