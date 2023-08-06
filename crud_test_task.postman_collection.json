@@ -1,0 +1,346 @@
+{
+	"info": {
+		"_postman_id": "ddf57c52-80c7-4f46-ac7c-0fee10cf9cc0",
+		"name": "crud_test_task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10978429"
+	},
+	"item": [
+		{
+			"name": "list",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJpYXQiOjE2OTEzMjg2MTUsIm5iZiI6MTY5MTMyODYxNSwiZGF0YSI6eyJpZCI6MSwiZmlyc3RuYW1lIjoiTSIsImxhc3RuYW1lIjoiViIsImVtYWlsIjoic0BtLnJ1In19.4vNAiHLQA7sLwjd4qd4-8ksB8R_v2OgFXtxrUhar3Ks",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/lists?limit=2&page=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"lists"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJpYXQiOjE2OTEzMjg2MTUsIm5iZiI6MTY5MTMyODYxNSwiZGF0YSI6eyJpZCI6MSwiZmlyc3RuYW1lIjoiTSIsImxhc3RuYW1lIjoiViIsImVtYWlsIjoic0BtLnJ1In19.4vNAiHLQA7sLwjd4qd4-8ksB8R_v2OgFXtxrUhar3Ks",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/lists/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"lists",
+								"11"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJhdWQiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJpYXQiOjE2OTEyMzI4MTIsIm5iZiI6MTY5MTIzMjgxMiwiZGF0YSI6eyJpZCI6MTEsImZpcnN0bmFtZSI6Ik0iLCJsYXN0bmFtZSI6IlYiLCJlbWFpbCI6InNAbS5ydSJ9fQ.YdxvGdf1BE_-kUt3YatcDJe2JydZBdrcsSwXlbmcX60",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Мои задачи на четверг\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/lists",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"lists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJhdWQiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJpYXQiOjE2OTEyMzI4MTIsIm5iZiI6MTY5MTIzMjgxMiwiZGF0YSI6eyJpZCI6MTEsImZpcnN0bmFtZSI6Ik0iLCJsYXN0bmFtZSI6IlYiLCJlbWFpbCI6InNAbS5ydSJ9fQ.YdxvGdf1BE_-kUt3YatcDJe2JydZBdrcsSwXlbmcX60",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Мои задачи на воскресенье\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/lists/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"lists",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJhdWQiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJpYXQiOjE2OTEyMzI4MTIsIm5iZiI6MTY5MTIzMjgxMiwiZGF0YSI6eyJpZCI6MTEsImZpcnN0bmFtZSI6Ik0iLCJsYXN0bmFtZSI6IlYiLCJlbWFpbCI6InNAbS5ydSJ9fQ.YdxvGdf1BE_-kUt3YatcDJe2JydZBdrcsSwXlbmcX60",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/lists/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"lists",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "record",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJhdWQiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJpYXQiOjE2OTEyMzI4MTIsIm5iZiI6MTY5MTIzMjgxMiwiZGF0YSI6eyJpZCI6MTEsImZpcnN0bmFtZSI6Ik0iLCJsYXN0bmFtZSI6IlYiLCJlbWFpbCI6InNAbS5ydSJ9fQ.YdxvGdf1BE_-kUt3YatcDJe2JydZBdrcsSwXlbmcX60",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Приготовить одежду\",\n    \"description\": \"Погладить постирать убрать\",\n    \"list_id\": 11\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/records",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"records"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJhdWQiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJpYXQiOjE2OTEyMzI4MTIsIm5iZiI6MTY5MTIzMjgxMiwiZGF0YSI6eyJpZCI6MTEsImZpcnN0bmFtZSI6Ik0iLCJsYXN0bmFtZSI6IlYiLCJlbWFpbCI6InNAbS5ydSJ9fQ.YdxvGdf1BE_-kUt3YatcDJe2JydZBdrcsSwXlbmcX60",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJhdWQiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJpYXQiOjE2OTEzMjY5OTUsIm5iZiI6MTY5MTMyNjk5NSwiZGF0YSI6eyJpZCI6MjMsImZpcnN0bmFtZSI6Ik0iLCJsYXN0bmFtZSI6IlYiLCJlbWFpbCI6InMxMkBtLnJ1In19.hquBmlih16mxUqPcrHjmmYV1yqLCORA3zVIu2eugD2M",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Приготовить одежду\",\n    \"description\": \"Какое то описание\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/records/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"records",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJhdWQiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJpYXQiOjE2OTEyMzI4MTIsIm5iZiI6MTY5MTIzMjgxMiwiZGF0YSI6eyJpZCI6MTEsImZpcnN0bmFtZSI6Ik0iLCJsYXN0bmFtZSI6IlYiLCJlbWFpbCI6InNAbS5ydSJ9fQ.YdxvGdf1BE_-kUt3YatcDJe2JydZBdrcsSwXlbmcX60",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJhdWQiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJpYXQiOjE2OTEzMjY5OTUsIm5iZiI6MTY5MTMyNjk5NSwiZGF0YSI6eyJpZCI6MjMsImZpcnN0bmFtZSI6Ik0iLCJsYXN0bmFtZSI6IlYiLCJlbWFpbCI6InMxMkBtLnJ1In19.hquBmlih16mxUqPcrHjmmYV1yqLCORA3zVIu2eugD2M",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/records/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"records",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"s1@m.ru\",\n    \"password\": \"qweqwe123123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"M\",\n    \"last_name\": \"V\",\n    \"email\": \"s@m.ru\",\n    \"password\": \"qweqwe123123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
