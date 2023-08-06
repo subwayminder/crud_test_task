@@ -46,66 +46,47 @@ class ListService
      * @throws OptimisticLockException
      * @throws ORMException
      */
-    public function store(ListRequest $request): array
+    public function store(ListRequest $request): TodoList|null
     {
         $list = new TodoList();
         $list->setTitle($request->getTitle());
         $list->setUser($this->user);
         $this->entityManager->persist($list);
         $this->entityManager->flush();
-        return [
-            'id' => $list->getId(),
-            'title' => $list->getTitle(),
-        ];
+        return $list;
     }
 
     /**
      * @throws OptimisticLockException
      * @throws ORMException
      */
-    public function update($id, ListRequest $request): array
+    public function update($id, ListRequest $request): TodoList|null
     {
         /** @var TodoList $list */
         $list = $this->repository->find($id);
         $list->setTitle($request->getTitle());
         $this->entityManager->persist($list);
         $this->entityManager->flush();
-        return [
-            'id' => $list->getId(),
-            'title' => $list->getTitle()
-        ];
+        return $list;
     }
-    public function show($id): array
+    public function show($id): TodoList|null
     {
-        $result = [];
+        /** @var TodoList|null $list */
         $list = $this->repository->findOneBy([
             'user_id' => $this->user->getId(),
             'id' => $id
         ]);
-        if ($list) {
-            $result = [
-                'id' => $list->getId(),
-                'title' => $list->getTitle(),
-            ];
-        }
-        return $result;
+        return $list ?: null;
     }
-    public function destroy($id): array
+    public function destroy($id): TodoList|null
     {
-        $response = [
-            'message' => 'List not found'
-        ];
         $list = $this->repository->findOneBy([
             'id' => $id,
             'user_id' => $this->user->getId()
         ]);
-        if ($list) {
-            $response = [
-                'id' => $list->getId(),
-            ];
-            $this->entityManager->remove($list);
-            $this->entityManager->flush();
-        }
-        return $response;
+        if (!$list) return null;
+        $this->entityManager->persist($list);
+        $this->entityManager->flush();
+        return $list;
     }
 }

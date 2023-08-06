@@ -24,25 +24,54 @@ class ListController
     }
     public function show($id): void
     {
-        $data = $this->listService->show($id);
+        $data = [];
+        $list = $this->listService->show($id);
+        if ($list) {
+            $data = [
+                'id' => $list->getId(),
+                'title' => $list->getTitle(),
+                'records' => $list->getRecordsArray()
+            ];
+        }
         $response = new JsonResponse($data, Response::HTTP_OK);
         $response->send();
     }
     public function create(ListRequest $request): void
     {
-        $data = $this->listService->store($request);
+        $data = [];
+        $list = $this->listService->store($request);
+        if ($list) {
+            $data = [
+                'id' => $list->getId(),
+                'title' => $list->getTitle(),
+            ];
+        }
         $response = new JsonResponse($data, Response::HTTP_OK);
         $response->send();
     }
     public function update($id, ListRequest $request): void
     {
-        $data = $this->listService->update($id, $request);
+        $data = [];
+        $list = $this->listService->update($id, $request);
+        if ($list) {
+            $data = [
+                'id' => $list->getId(),
+                'title' => $list->getTitle(),
+            ];
+        }
         $response = new JsonResponse($data, Response::HTTP_OK);
         $response->send();
     }
     public function delete($id): void
     {
-        $data = $this->listService->destroy($id);
+        $data = [];
+        $list = $this->listService->destroy($id);
+        if ($list) {
+            $data = [
+                'id' => $list->getId(),
+                'title' => $list->getTitle(),
+            ];
+        }
         $response = new JsonResponse($data, Response::HTTP_OK);
         $response->send();
     }
