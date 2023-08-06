@@ -11,3 +11,5 @@
    ``
 
 And you ready to go! Application will be exposed on localhost:8000 by default. I also left database container with open 3306 port if you want to connect directly.
+
+You can check all api calls in postman json collection in project root directory.
