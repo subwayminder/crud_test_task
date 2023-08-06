@@ -2,9 +2,11 @@
 
 namespace Subwayminder\CrudTestTask\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\OneToMany;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'todo_lists')]
@@ -21,6 +23,8 @@ class TodoList
     #[ManyToOne(targetEntity: User::class, inversedBy: 'lists')]
     #[JoinColumn(name: 'user_id', referencedColumnName: 'id')]
     private User $user;
+    #[OneToMany(mappedBy: 'list', targetEntity: TodoRecord::class)]
+    private Collection $records;
 
     /**
      * @return string
@@ -67,5 +71,18 @@ class TodoList
     public function getId(): ?int
     {
         return $this->id;
+    }
+    public function getRecords(): Collection
+    {
+        return $this->records;
+    }
+    public function getRecordsArray(): array
+    {
+        $result = [];
+        foreach ($this->records as $record){
+            /** @var TodoRecord $record */
+            $result[] = $record->toArray();
+        }
+        return $result;
     }
 }
