@@ -39,19 +39,19 @@ class AuthService
 
     public function getToken(User $user): string
     {
-        $token = array(
-            "iss" => 'http://example.org',
-            "aud" => 'http://example.org',
+        $token = [
+            "iss" => $_ENV['APP_URL'],
+            "aud" => $_ENV['APP_URL'],
             "iat" => time(),
             "nbf" => time(),
-            "data" => array(
+            "data" => [
                 "id" => $user->getId(),
                 "firstname" => $user->getFirstName(),
                 "lastname" => $user->getLastName(),
                 "email" => $user->getEmail()
-            )
-        );
-        return JWT::encode($token, 'DfzCzKBflsthbax1TKUawbhOd6NR207bgtr9DesRw5A0W7WznHNJShGwPCKuoKYV', 'HS256');
+            ]
+        ];
+        return JWT::encode($token, $_ENV['JWT_SECRET'], 'HS256');
     }
 
     public function checkUser(string $email): bool
